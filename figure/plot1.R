@@ -1,24 +1,32 @@
-rankall <- function(outcomeType,dRank="best") {
-  outcome<-read.csv("outcome-of-care-measures.csv",
-                    colClasses = "character",
-                    na.strings = "Not Available")
-  validstates<-outcome[,7]
-  validstates<-unique(sort(validstates))
-  print(validstates)
-  dataFrameR <-data.frame();
-  i<-1
-  for(state in validstates){
-    dataFrameP <- rankS(outcome,outcomeType,dRank,state)
-    dataFrameR <- rbind(dataFrameR,dataFrameP)
-    ##i<-i+1
-    ##if(i>2){
-    ##break;
-    ##}
-    
-  }
+plot1 <- function() {
+  ##Change to working directory where the file resides
+  setwd("e:/Architecture/Coursera/exdata_data_household_power_consumption")
+  ##read the table with headers on
+  data<-read.table("household_power_consumption.txt",
+                   sep=";",na.strings="?",header=TRUE)
   
-  dataFrameR<-as.data.frame(dataFrameR)
-  names(dataFrameR)<-c("hospital","state")
-  return(data.frame(dataFrameR))
+  ##Extract the data for two days that we are interested in 
+  
+  df<-subset(data,data[,1]=="1/2/2007"|data[,1]=="2/2/2007",c(Date,Time,Global_active_power))
+  
+  
+  
+  #data<-transform(data,Time=strptime(Time,"%H:%M:%S"))
+  
+  #data<-transform(data,Date=as.Date(Date,"%d/%m/%Y"))
+  
+  #df<-subset(data,data[,1]=="2007-02-01"|data[,1]=="2007-02-02")
+  
+  
+  
+  png(filename = "../ExData_Plotting1/figure/Plot1.png",
+      width = 480, height = 480, units = "px", pointsize = 12,
+      bg = "white")
+  
+  hist(df[,3],col="red",main="Global Active Power",xlab="Global Active Power(Kilowatts)",ylim=range(1:1500))
+  
+  dev.off()
+  #names(dataFrameR)<-c("hospital","state")
+  
   
 }
