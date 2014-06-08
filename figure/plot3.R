@@ -13,7 +13,7 @@ plot3 <- function() {
   df$DateTime<- as.POSIXct(strptime(paste(df$Date, df$Time), format = "%d/%m/%Y %H:%M:%S"))
   
   ##Plot
-  png(filename = "../ExData_Plotting1/figure/Plot3.png",
+  png(filename = "../ExData_Plotting1/figure/plot3.png",
       width = 480, height = 480, units = "px", pointsize = 12,
       bg = "white")
   plot(df$DateTime,df$Sub_metering_1,col="gray",xaxt="n",type="l",xlab="",ylab="Energy sub metering")

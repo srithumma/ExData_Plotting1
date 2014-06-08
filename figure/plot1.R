@@ -13,7 +13,7 @@ plot1 <- function() {
   
   ##Plot histogram
   
-  png(filename = "../ExData_Plotting1/figure/Plot1.png",
+  png(filename = "../ExData_Plotting1/figure/plot1.png",
       width = 480, height = 480, units = "px", pointsize = 12,
       bg = "white")
   

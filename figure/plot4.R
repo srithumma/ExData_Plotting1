@@ -13,7 +13,7 @@ plot4 <- function() {
   df$DateTime<- as.POSIXct(strptime(paste(df$Date, df$Time), format = "%d/%m/%Y %H:%M:%S"))
   op=par(mfrow=c(2,2))
   ##Plot
-  png(filename = "../ExData_Plotting1/figure/Plot4.png",
+  png(filename = "../ExData_Plotting1/figure/plot4.png",
       width = 480, height = 480, units = "px", pointsize = 12,
       bg = "white")
   
