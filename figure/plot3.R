@@ -13,21 +13,26 @@ plot3 <- function() {
   df$DateTime<- as.POSIXct(strptime(paste(df$Date, df$Time), format = "%d/%m/%Y %H:%M:%S"))
   
   ##Plot
-  png(filename = "../ExData_Plotting1/figure/Plot2.png",
+  png(filename = "../ExData_Plotting1/figure/Plot3.png",
       width = 480, height = 480, units = "px", pointsize = 12,
       bg = "white")
-  plot(df$DateTime,df$Sub_metering_1,col="gray",xaxt="n",type="l",xlab="",ylab="Global Active Power(Kilowatts)")
-  plot(df$DateTime,df$Sub_metering_2,col="red",xaxt="n",type="l",xlab="",ylab="Global Active Power(Kilowatts)")
-  plot(df$DateTime,df$Sub_metering_3,col="blue",xaxt="n",type="l",xlab="",ylab="Global Active Power(Kilowatts)")
+  plot(df$DateTime,df$Sub_metering_1,col="gray",xaxt="n",type="l",xlab="",ylab="Energy sub metering")
+  lines(df$DateTime,df$Sub_metering_2,col="red",xaxt="n",type="l",xlab="",ylab="Energy sub metering")
+  lines(df$DateTime,df$Sub_metering_3,col="blue",xaxt="n",type="l",xlab="",ylab="Energy sub metering")
+  legend("topright",legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
+         lty=1,lwd=1,col=c("black","red","blue"),
+         ncol=1,cex=0.8, 
+         bty="1",  
+         inset =c(0,0),
+         text.col=c("black"))
+  
   
   axis(1, at=c(min(df$DateTime),min(df$DateTime)+86400,
                min(df$DateTime)+2*86400),
        labels=c("Thu", "Fri", "Sat"))
-  ##data<-transform(data,Time=strptime(Time,"%d/%m/%Y %H:%M:%S"))
-  
+ 
   
   dev.off()
-  #names(dataFrameR)<-c("hospital","state")
-  
+
   
 }
